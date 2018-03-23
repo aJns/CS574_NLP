@@ -7,7 +7,7 @@
 \usepackage{fullpage}
 \usepackage[default]{cantarell}
 \usepackage[yyyymmdd]{datetime}
-\usepackage[style=ieee]{biblatex}
+\usepackage[style=ieee,backend=bibtex]{biblatex}
 \usepackage{url}
 % \usepackage[finnish]{babel}
 \usepackage{hyperref}
@@ -22,7 +22,7 @@
 \usepackage{siunitx}
 
 \graphicspath{{../images/}}
-\bibliography{assignment}
+\bibliography{assignment.bib}
 
 %----------------------------------------------------------------------------------------
 %	DOCUMENT INFORMATION
@@ -55,7 +55,8 @@
 %----------------------------------------------------------------------------------------
 
 % \DefineBibliographyStrings{finnish}
-\printbibliography{}
+\printbibliography
+
 
 %----------------------------------------------------------------------------------------
 
