@@ -5,8 +5,9 @@ tokenizer = nltk.RegexpTokenizer(r'\w+')
 f = open("./data/stopwords-fi.txt")
 stopWords = tokenizer.tokenize(f.read())
 f.close()
+stopWords = []
 
-f = open("./data/article0.txt")
+f = open("./data/article2.txt")
 text = f.read()
 f.close()
 words = tokenizer.tokenize(text)
@@ -43,7 +44,7 @@ for sentence in sentenceValue:
 # Average value of a sentence from original text
 average = int(sumValues/ len(sentenceValue))
 
-weight = 1
+weight = 0.9
 
 summary = ''
 for sentence in sentences:
