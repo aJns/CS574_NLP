@@ -56,13 +56,15 @@ Boths these metrics require a golden standard in the form of human-written summa
 BLEU and ROUGE cover content, but for small reference sets, would not be able to evaluate grammar and readability. A small number of the summaries could be read by the project members themselves and evaluated quantitatively for cohesion and readability, although this is not expected to be of a high quality based on knowledge of current NLP performance, because this is a challenge even in state-of-the-art systems.
 
 \section{Plan of work}
+As mentioned the previous proposal, it is perhaps needed to pivot the idea in the case of failing coming up with some feasible evaluation methods. Now we found applicable methods, so we don't have to.
 
 \begin{enumerate}
-  \item Get a simple summarising system that can summarize short texts working, by taking some currently used techniques
-  \item Get another - or come up with another - system that can summarize long text to relatively shorter text with preserving the semantics.
-  \item Connect those two systems (or multiple of systems in layer) to summarize long text to be much shorter.
-  \item Adopt Evaluation plan used in semantic based approaches in abstractive methods to gauge accuracy of our system. (Up to here is planned to be done until next proposal)
-  \item If it turned out to be no way to evaluate our system, then consider pivoting of the idea from the beginning
-  \item If it seems producing some meaningful results, then stick to the initial plan
+  \item[week 9] Collect summarizing systems as many as possible and categorize them by adopted approaches.
+  \item[week 10] Develop our own approaches to summarize long text
+  \item[week 11] Get one set of data (maybe a book of another language translated by different translator) and try to apply evaluation method.
+  \item[week 12] If test run works, then collect datasets. 
+  \item [--------] Up to here is the plan before the next Status Report
+  \item[week 13] From here would be decided by the result of test run in week 11
+  \item[week 14-] TBD
 \end{enumerate}
 
