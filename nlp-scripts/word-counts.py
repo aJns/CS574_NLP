@@ -1,34 +1,37 @@
 import nltk
+import csv
+import os
 
-data_dir = "../project-data/"
-text_paths = [
-        "Adventures of Huckleberry Finn/Mark Twain_The Adventures of Huckleberry Finn.txt"
-        ,"Atlas Shrugged/rand_atlas.txt"
-        ,"Dracula/stoker_dracula.txt"
-        ,"Emma/austen_emma.txt"
-        ,"Fahrenheit 451/bradbury_fahrenheit.txt"
-        ,"Jane Eyre/bronte_jane.txt"
-        ,"Julius Caesar/shakespeare_caesar.txt"
-        ,"the Alchemist/coelho_alchemist.txt"
-        ,"the Bell Jar/plath_belljar.txt"
-        ,"the Grapes of Wrath/steinbeck_grapes.txt"
-        ,"the Hobbit/tolkien_hobbit.txt"
-        ]
+data_dir = "../project-data"
 
 
 def get_word_count(file_path):
+    tokens = list()
     with open(file_path, 'r') as f:
-        text = f.read()
-    tokenizer = nltk.tokenize.RegexpTokenizer(r'\w+')
-    tokens = tokenizer.tokenize(text)
+        try:
+            text = f.read()
+            tokenizer = nltk.tokenize.RegexpTokenizer(r'\w+')
+            tokens = tokenizer.tokenize(text)
+        except UnicodeDecodeError:
+            print("Couldn't read ", file_path)
+
     return len(tokens)
 
+def compile_path_list(path_list, rootdir):
+    for root, _, files in os.walk(rootdir):
+        for f in files:
+            if f.endswith('.txt'):
+                path_list.append(os.path.join(root, f))
 
+
+
+text_paths = list()
+compile_path_list(text_paths, data_dir)
 wc_dict = dict()
 for path in text_paths:
-    wc_dict[path.split("/")[0]] = get_word_count(data_dir+path)
+    wc_dict[path] = get_word_count(path)
 
-import csv
+
 with open("word_counts.csv", "w") as f:
     w = csv.DictWriter(f, wc_dict.keys())
     w.writeheader()
