@@ -11,5 +11,21 @@ Aside from simply reading the summarisation outputs of the algorithm, two quanti
 
 The nltk.translate.bleu\_score toolkit has a function, corpus\_blue, which can be used for BLEU evaluation. BLEU was originally used for translations, but is now also used to evaluate summarisations and is based on precision scores of n-gram overlaps between documents and references. The corpus\_blue allows for varying weights of 1- to 4-grams, and multiple golden references. 
 
+In table \ref{table:bleu_huckfinn}, example scores of running this BLEU evaluation can be seen. In each case, one online summary was evaluated against the other three as golden references. For pure 1-grams, the scores are always higher than 2-grams, and indeed they were almost zero for 3- and 4-grams. Another remark is that while scores over 0.6 seem quite high, the CliffsNotes score is a low outlier at only 0.295 for the 1-gram case. Finally, it must be noted that increasing the number of references also increases the score. Because there are more versions of what a "correct" summary is, there is probably also more overlap of the remaining summary to them. Because it is not easy to obtain more summaries, the availability of only three to four per book must simply be kept in mind as a limitation when it comes to evaluation.
+
+\begin{table}[hbt]
+	\centering
+	\caption{Example BLEU 1-gram and 2-gram evaluation for online summaries of the Adventures of Huckleberry Finn.}
+	\label{table:bleu_huckfinn}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{}   & \textbf{1-gram} & \textbf{2-gram} \\ \hline
+		CliffsNotes & 0.295           & 0.127           \\ \hline
+		SparkNotes  & 0.646           & 0.260           \\ \hline
+		GradeSaver  & 0.655           & 0.262           \\ \hline
+		Wikipedia   & 0.646           & 0.234           \\ \hline
+	\end{tabular}
+\end{table}
+
 
 \section{Results and Discussion}
