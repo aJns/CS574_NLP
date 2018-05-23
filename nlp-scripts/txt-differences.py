@@ -2,16 +2,16 @@ import nltk
 
 data_dir = "../project-data/"
 text_paths = [
-        "Adventures of Huckleberry Finn/Mark Twain_The Adventures of Huckleberry Finn.txt"
-        ,"Atlas Shrugged/rand_atlas.txt"
-        ,"Dracula/stoker_dracula.txt"
-        ,"Emma/austen_emma.txt"
-        ,"Fahrenheit 451/bradbury_fahrenheit.txt"
-        ,"Jane Eyre/bronte_jane.txt"
-        ,"Julius Caesar/shakespeare_caesar.txt"
+        # "Adventures of Huckleberry Finn/Mark Twain_The Adventures of Huckleberry Finn.txt"
+        # ,"Atlas Shrugged/rand_atlas.txt"
+        # ,"Dracula/stoker_dracula.txt"
+        # ,"Emma/austen_emma.txt"
+        "Fahrenheit 451/bradbury_fahrenheit.txt"
+        # ,"Jane Eyre/bronte_jane.txt"
+        # ,"Julius Caesar/shakespeare_caesar.txt"
         ,"the Alchemist/coelho_alchemist.txt"
-        ,"the Bell Jar/plath_belljar.txt"
-        ,"the Grapes of Wrath/steinbeck_grapes.txt"
+        # ,"the Bell Jar/plath_belljar.txt"
+        # ,"the Grapes of Wrath/steinbeck_grapes.txt"
         ,"the Hobbit/tolkien_hobbit.txt"
         ]
 
@@ -23,7 +23,11 @@ def retrieve_tokens(file_path):
     tokens = nltk.word_tokenize(text)
     stopwords = nltk.corpus.stopwords.words('english')
     tokens = list(filter(lambda word: word.lower() not in stopwords and word.isalpha(), tokens))
-    return tokens
+    tagged = nltk.pos_tag(tokens)
+    noun_tagged = list(filter(lambda tandw: tandw[1] == 'NN' or tandw[1] == 'NNP', tagged))
+    noun_tokens = list(map(lambda tandw: tandw[0], noun_tagged))
+
+    return noun_tokens
 
 
 
