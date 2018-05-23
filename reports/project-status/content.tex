@@ -6,6 +6,42 @@ A dataset was collected from the internet of ten novels and a play, with at leas
 
 \section{Algorithms}
 
+Our hypothesis in summarising long texts is that differences between books are
+important in the summary. That's why we've analysed the word frequencies in our
+set of books. It becomes clear that often the most used, or at least the top 5
+noun is referring to the main character. In books where the main character is
+named, like \textit{Fahrenheit 451}, or \textit{The Hobbit}, that noun is the
+name of the main character. In books where the main character is not named, a
+different noun is used, like ``boy'' in \textit{The Alchemist}.
+
+The results of our analysis are contained in the three
+graphs~\ref{fig:fahrenheit_451_nouns},~\ref{fig:the_alchemist_nouns},~\ref{fig:the_hobbit_nouns},
+which each contain the 30 most used nouns in a book.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{fahrenheit_451_nouns}
+	\caption{Most used nouns in Fahrenheit 451}\label{fig:fahrenheit_451_nouns}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{the_alchemist_nouns}
+	\caption{Most used nouns in The Alchemist}\label{fig:the_alchemist_nouns}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{the_hobbit_nouns}
+	\caption{Most used nouns in The Hobbit}\label{fig:the_hobbit_nouns}
+\end{figure}
+
+Our current plan is to use this information to focus summarization around these
+important words. The results are not going to be pretty, but at least in some
+books it might result in a summary that at least conveys the important plot
+points.
+
+
 \section{Evaluation}
 Aside from simply reading the summarisation outputs of the algorithm, two
 quantitative measures were proposed to evaluate them. It must be noted again
