@@ -6,6 +6,41 @@ create a dataset, attempt to implement summarisation algorithms and to evaluate
 them. Based on these results, the project will be rounded off in the remaining
 two weeks.
 
+\section{Related Work}
+Plenty of related work has been discussed earlier sections; \cite{Gaikwad2016} 
+suggests classical approaches of current automatic summarization techniques, 
+with plenty of abstractive and extractive methods. Most of early works on 
+automatic summarization were focused on documentations for given text, with 
+frequency of words and gauging the relateness of each word to given or overall
+context. These appearance frequencies are also used in the evaluation.
+
+Recent researches on automatic summarization have approached in statisticall
+modelling and machine learning. Naturally those approaches started from the 
+basic techniques, and so most approaches were made with extractive methods: 
+\cite{2017arXiv170804439V}. Since this methodology linterally extract
+human language information from given text, the output is the selected 
+subset of input document. Thus, it is perhaps not possible to paraphrase
+just like human, but it was the mainstream of this field. However, this 
+methodology is highly related to the frequency of word appearance, so that
+it is challenging to rank seemingly-important words shown in the input
+document. Moreover, it is demanding to understand basic grammar of input
+language in order to select subset and reconstruct into several sentences.
+
+As the deep learning approaches became main strategy in many researches areas,
+the importance of modelling is risen, many researchers adopt some abstractive 
+methods in Natural Language Processing: \cite{2016arXiv160206023N}, 
+\cite{2017arXiv170404368S}, and \cite{Rush2015}. Before, Abstractive sentence
+summarization has been traditionally used in headline generation, which gives
+intuition that abstractive methods is capable of not only summarizing but 
+also paraphrasing the input documents wich some understanding of human
+languages. 
+
+However, most of work on automatic summarization is primarily targeting on
+the summarization of article-length input document. It is found that not many
+papers are dealing with the input document of book-level length, and most of
+those papers are about classification task. This gives us an idea to apply
+recent techniques in automatic summarization on books.
+
 \section{Dataset}
 A dataset was collected from the internet of ten novels and a play, with at least three summaries each. The books are mainly fictional classics, due to their popularity on summary resources and often the expiration of their copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and GradeSaver. The books and summaries both vary quite vastly in length. All the documents were saved as or converted to text files, to facilitate consistency and ease of manipulation in Python.
 
@@ -45,6 +80,11 @@ Our current plan is to use this information to focus summarization around these
 important words. The results are not going to be pretty, but at least in some
 books it might result in a summary that at least conveys the important plot
 points.
+
+\section{Approach}
+
+
+\section{Experiment}
 
 
 \section{Evaluation}
@@ -86,18 +126,6 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 	\end{tabular}
 \end{table}
 
-\section{Related Work}
-Plenty of related work has been discussed earlier sections; \cite{Gaikwad2016} 
-suggests classical approaches of current automatic summarization techniques, 
-with plenty of abstractive and extractive methods. And it is said that 
-approaches related to machine learning are made with extractive methods: 
-\cite{2017arXiv170804439V}. As it is mentioned in the previous sections, 
-extractive methods can be easily performed, but the result is somewhat 
-expectable. The new trend is shown, however, that many deep learning approaches 
-adopt some abstractive methods: \cite{2016arXiv160206023N}, 
-\cite{2017arXiv170404368S}, and \cite{Rush2015}. Still, these papers are 
-primarily targeting article-length summarization, so that our approaches would 
-stand out in the targeting length of source text. 
 
 \section{Conclusions and Anticipated Problems}
 
