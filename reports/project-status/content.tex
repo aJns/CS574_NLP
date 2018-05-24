@@ -6,25 +6,10 @@ create a dataset, attempt to implement summarisation algorithms and to evaluate
 them. Based on these results, the project will be rounded off in the remaining
 two weeks.
 
-\section{Approach}
+\section{Dataset}
+A dataset was collected from the internet of ten novels and a play, with at least three summaries each. The books are mainly fictional classics, due to their popularity on summary resources and often the expiration of their copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and GradeSaver. The books and summaries both vary quite vastly in length. All the documents were saved as or converted to text files, to facilitate consistency and ease of manipulation in Python.
 
-Our approach is to try out extractive methods first. If we can get extractive
-methods to work okay on our dataset, we will move on to abstractive methods.
-As will be mentioned in Section~\ref{sec:experiments}, we plan to first analyze
-the books in our dataset to find out what kind of features should be focused on
-in the summary.
-
-A dataset was collected from the internet of ten novels and a play, with at
-least three summaries each. The books are mainly fictional classics, due to
-their popularity on summary resources and often the expiration of their
-copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and
-GradeSaver. The books and summaries both vary quite vastly in length. All the
-documents were saved as or converted to text files, to facilitate consistency
-and ease of manipulation in Python.
-
-\section{Experiments}\label{sec:experiments}
-
-\subsection{Algorithms}
+\section{Algorithms}
 
 Our hypothesis in summarising long texts is that differences between books are
 important in the summary. That's why we've analysed the word frequencies in our
@@ -62,7 +47,7 @@ books it might result in a summary that at least conveys the important plot
 points.
 
 
-\subsection{Evaluation}
+\section{Evaluation}
 Aside from simply reading the summarisation outputs of the algorithm, two
 quantitative measures were proposed to evaluate them. It must be noted again
 that the scores are expected to be quite low, because the nature of
@@ -89,8 +74,7 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 
 \begin{table}[hbt]
 	\centering
-	\caption{Example BLEU 1-gram and 2-gram evaluation for online summaries of
-	the Adventures of Huckleberry Finn.}\label{table:bleu_huckfinn}
+	\caption{Example BLEU 1-gram and 2-gram evaluation for online summaries of the Adventures of Huckleberry Finn.}\label{table:bleu_huckfinn}
 	\begin{tabular}{l l l }
 		\toprule
 		\textbf{}   & \textbf{1-gram} & \textbf{2-gram} \\ \midrule
@@ -102,5 +86,15 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 	\end{tabular}
 \end{table}
 
+\section{Related Work}
+Plenty of related work has been discussed earlier sections; \cite{Gaikwad2016} 
+suggests classical approaches of current automatic summarization techniques, 
+with plenty of abstractive and extractive methods. And it is said that 
+approaches related to machine learning are only made with extractive methods. 
+The new trend is shown, however, that many deep learning approaches adopt some 
+abstractive methods: \cite{2016arXiv160206023N} and \cite{Rush2015}. Still, 
+these papers are primarily targeting article-length summarization, so that our 
+approaches would stand out in the targeting length of source text.
 
 \section{Conclusions and Anticipated Problems}
+
