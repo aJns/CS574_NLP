@@ -7,7 +7,7 @@ them. Based on these results, the project will be rounded off in the remaining
 two weeks.
 
 \section{Related Work}
-Plenty of related work has been discussed earlier sections; \cite{Gaikwad2016} 
+Plenty of related work has been discussed earlier sections;~\cite{Gaikwad2016} 
 suggests classical approaches of current automatic summarization techniques, 
 with plenty of abstractive and extractive methods. Most of early works on 
 automatic summarization were focused on documentations for given text, with 
@@ -15,25 +15,25 @@ frequency of words and gauging the relateness of each word to given or overall
 context. These appearance frequencies are also used in the evaluation.
 
 Recent researches on automatic summarization have approached in statisticall
-modelling and machine learning. Naturally those approaches started from the 
-basic techniques, and so most approaches were made with extractive methods: 
-\cite{2017arXiv170804439V}. Since this methodology linterally extract
-human language information from given text, the output is the selected 
-subset of input document. Thus, it is perhaps not possible to paraphrase
-just like human, but it was the mainstream of this field. However, this 
-methodology is highly related to the frequency of word appearance, so that
-it is challenging to rank seemingly-important words shown in the input
-document. Moreover, it is demanding to understand basic grammar of input
-language in order to select subset and reconstruct into several sentences.
+modelling and machine learning. Naturally those approaches started from the
+basic techniques, and so most approaches were made with extractive
+methods:~\cite{2017arXiv170804439V}. Since this methodology linterally extract
+human language information from given text, the output is the selected subset
+of input document. Thus, it is perhaps not possible to paraphrase just like
+human, but it was the mainstream of this field. However, this methodology is
+highly related to the frequency of word appearance, so that it is challenging
+to rank seemingly-important words shown in the input document. Moreover, it is
+demanding to understand basic grammar of input language in order to select
+subset and reconstruct into several sentences.
 
 As the deep learning approaches became main strategy in many researches areas,
-the importance of modelling is risen, many researchers adopt some abstractive 
-methods in Natural Language Processing: \cite{2016arXiv160206023N}, 
-\cite{2017arXiv170404368S}, and \cite{Rush2015}. Before, Abstractive sentence
-summarization has been traditionally used in headline generation, which gives
-intuition that abstractive methods is capable of not only summarizing but 
-also paraphrasing the input documents wich some understanding of human
-languages. 
+the importance of modelling is risen, many researchers adopt some abstractive
+methods in Natural Language
+Processing:~\cite{2016arXiv160206023N},~\cite{2017arXiv170404368S},~and~\cite{Rush2015}.
+Before, Abstractive sentence summarization has been traditionally used in
+headline generation, which gives intuition that abstractive methods is capable
+of not only summarizing but also paraphrasing the input documents wich some
+understanding of human languages. 
 
 However, most of work on automatic summarization is primarily targeting on
 the summarization of article-length input document. It is found that not many
@@ -41,10 +41,24 @@ papers are dealing with the input document of book-level length, and most of
 those papers are about classification task. This gives us an idea to apply
 recent techniques in automatic summarization on books.
 
-\section{Dataset}
-A dataset was collected from the internet of ten novels and a play, with at least three summaries each. The books are mainly fictional classics, due to their popularity on summary resources and often the expiration of their copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and GradeSaver. The books and summaries both vary quite vastly in length. All the documents were saved as or converted to text files, to facilitate consistency and ease of manipulation in Python.
 
-\section{Algorithms}
+\section{Approach}
+As it is mentioned, the strategy to summarize whole book should be different
+from simply summarizing the article. Word frequency seems it only shows some
+main characters, but this informations could possibly be used in abstractive
+modelings. 
+
+A dataset was collected from the internet of ten novels and a play, with at
+least three summaries each. The books are mainly fictional classics, due to
+their popularity on summary resources and often the expiration of their
+copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and
+GradeSaver. The books and summaries both vary quite vastly in length. All the
+documents were saved as or converted to text files, to facilitate consistency
+and ease of manipulation in Python.
+
+\section{Experiments}
+
+\subsection{Algorithms}
 
 Our hypothesis in summarising long texts is that differences between books are
 important in the summary. That's why we've analysed the word frequencies in our
@@ -81,23 +95,7 @@ important words. The results are not going to be pretty, but at least in some
 books it might result in a summary that at least conveys the important plot
 points.
 
-\section{Approach}
-As it is mentioned, the strategy to summarize whole book should be different
-from simply summarizing the article. Word frequency seems it only shows some
-main characters, but this informations could possibly be used in abstractive
-modelings. 
-
-\section{Experiment}
-Most of existing extractive methods are poorly performing if the input document 
-is a form of book(s). This is because of the reason proposed in the Algorithm 
-section. It seems that extractive method is not applicable if the input document
-contains story in it. 
-
-Deep learning approaches are somewhat difficult to test with book-length input
-document, because of training rate. Several layers of neural network consume
-plenty of times, so we could not obtain meaningful data yet. 
-
-\section{Evaluation}
+\subsection{Evaluation}
 Aside from simply reading the summarisation outputs of the algorithm, two
 quantitative measures were proposed to evaluate them. It must be noted again
 that the scores are expected to be quite low, because the nature of
@@ -138,4 +136,10 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 
 
 \section{Conclusions and Anticipated Problems}
+In conclusion, our problem seems to be quite hard, and we haven't gotten any
+good results yet. We might be able to produce some okay-ish results using
+extractive methods, for example by focusing on ``important-character nouns''
+that refer to the main characters. However, actually good results are probably
+only obtained by state-of-the-art neural network solutions. Specific problems
+would be the lack of related work that we can use, and also good datasets.
 
