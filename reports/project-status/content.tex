@@ -88,7 +88,14 @@ main characters, but this informations could possibly be used in abstractive
 modelings. 
 
 \section{Experiment}
+Most of existing extractive methods are poorly performing if the input document 
+is a form of book(s). This is because of the reason proposed in the Algorithm 
+section. It seems that extractive method is not applicable if the input document
+contains story in it. 
 
+Deep learning approaches are somewhat difficult to test with book-length input
+document, because of training rate. Several layers of neural network consume
+plenty of times, so we could not obtain meaningful data yet. 
 
 \section{Evaluation}
 Aside from simply reading the summarisation outputs of the algorithm, two
