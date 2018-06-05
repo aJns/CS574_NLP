@@ -2,22 +2,22 @@
 In this report, the status update of the CS574 NLP project is presented. An
 overview is given of the progress made since the project proposal four weeks
 previously. The main work done was to conduct additional literature research,
-create a dataset, attempt to implement summarisation algorithms and to evaluate
+create a dataset, attempt to implement summarization algorithms and to evaluate
 them. Based on these results, the project will be rounded off in the remaining
 two weeks.
 
 \section{Related Work}
 Plenty of related work has been discussed earlier sections;~\cite{Gaikwad2016} 
 suggests classical approaches of current automatic summarization techniques, 
-with plenty of abstractive and extractive methods. Most of early works on 
-automatic summarization were focused on documentations for given text, with 
-frequency of words and gauging the relateness of each word to given or overall
+using abstractive and extractive methods. Most early works on 
+automatic summarization focused on documentations for given text, with 
+frequency of words and gauging the relatedness of each word to given or overall
 context. These appearance frequencies are also used in the evaluation.
 
-Recent researches on automatic summarization have approached in statisticall
+Recent researches on automatic summarization have approached in statistical
 modelling and machine learning. Naturally those approaches started from the
 basic techniques, and so most approaches were made with extractive
-methods:~\cite{2017arXiv170804439V}. Since this methodology linterally extract
+methods:~\cite{2017arXiv170804439V}. Since this methodology literally extract
 human language information from given text, the output is the selected subset
 of input document. Thus, it is perhaps not possible to paraphrase just like
 human, but it was the mainstream of this field. However, this methodology is
@@ -32,7 +32,7 @@ methods in Natural Language
 Processing:~\cite{2016arXiv160206023N},~\cite{2017arXiv170404368S},~and~\cite{Rush2015}.
 Before, Abstractive sentence summarization has been traditionally used in
 headline generation, which gives intuition that abstractive methods is capable
-of not only summarizing but also paraphrasing the input documents wich some
+of not only summarizing but also paraphrasing the input documents which some
 understanding of human languages. 
 
 However, most of work on automatic summarization is primarily targeting on
@@ -46,7 +46,7 @@ recent techniques in automatic summarization on books.
 As it is mentioned, the strategy to summarize whole book should be different
 from simply summarizing the article. Word frequency seems it only shows some
 main characters, but this informations could possibly be used in abstractive
-modelings. 
+models. 
 
 A dataset was collected from the internet of ten novels and a play, with at
 least three summaries each. The books are mainly fictional classics, due to
@@ -96,15 +96,15 @@ books it might result in a summary that at least conveys the important plot
 points.
 
 \subsection{Evaluation}
-Aside from simply reading the summarisation outputs of the algorithm, two
+Aside from simply reading the summarization outputs of the algorithm, two
 quantitative measures were proposed to evaluate them. It must be noted again
 that the scores are expected to be quite low, because the nature of
-summarisation leads to very different answers with no objective measure of how
+summarization leads to very different answers with no objective measure of how
 ``good'' they are. 
 
 The nltk.translate.bleu\_score toolkit has a function, corpus\_blue, which can
 be used for BLEU evaluation. BLEU was originally used for translations, but is
-now also used to evaluate summarisations and is based on precision scores of
+now also used to evaluate summaries and is based on precision scores of
 n-gram overlaps between documents and references. The corpus\_blue allows for
 varying weights of 1- to 4-grams, and multiple golden references. 
 
@@ -137,7 +137,7 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 
 \section{Conclusions and Anticipated Problems}
 In conclusion, our problem seems to be quite hard, and we haven't gotten any
-good results yet. We might be able to produce some okay-ish results using
+good results yet. We might be able to produce some reasonable results using
 extractive methods, for example by focusing on ``important-character nouns''
 that refer to the main characters. However, actually good results are probably
 only obtained by state-of-the-art neural network solutions. Specific problems
