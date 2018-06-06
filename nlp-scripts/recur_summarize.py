@@ -5,7 +5,7 @@ import simple_sum as simsum
 
 
 OUT_SEN_COUNT = 10
-IN_SEN_COUNT = OUT_SEN_COUNT * 3
+IN_SEN_COUNT = 50
 
 
 # Also stolen from the interwebs
@@ -23,9 +23,10 @@ def read_file(text_file):
 
 def should_end(text_sents):
     sentence_count = len(text_sents)
+    limit = OUT_SEN_COUNT
     print("Text has", sentence_count, "sentences.")
-    print("The limit is", (IN_SEN_COUNT/2))
-    should_stop = sentence_count < (IN_SEN_COUNT/2)
+    print("The limit is", limit)
+    should_stop = sentence_count <= limit
     if should_stop:
         print("Stopping")
     else:
