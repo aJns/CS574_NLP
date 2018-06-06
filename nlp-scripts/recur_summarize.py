@@ -78,5 +78,6 @@ if __name__ == "__main__":
     print(print_width*"#", "\n\n")
     print(summary)
 
-    with open("recur_summary.txt", mode="w") as sf:
+    output_fname = "summary_" + text_file.split("/")[-1]
+    with open(output_fname, mode="w") as sf:
         sf.write(summary)
