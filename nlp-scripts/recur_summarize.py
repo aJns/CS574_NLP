@@ -22,7 +22,15 @@ def read_file(text_file):
 
 
 def should_end(text_sents):
-    return len(text_sents) < (IN_SEN_COUNT/2)
+    sentence_count = len(text_sents)
+    print("Text has", sentence_count, "sentences.")
+    print("The limit is", (IN_SEN_COUNT/2))
+    should_stop = sentence_count < (IN_SEN_COUNT/2)
+    if should_stop:
+        print("Stopping")
+    else:
+        print("Continuing")
+    return should_stop
 
 
 def join_sents(s1, s2):
@@ -40,12 +48,13 @@ def recur_summarize(sum_fun, text, recur_count = 0):
 
     for sen_chunk in sen_chunks:
         temp_text = reduce(join_sents, sen_chunk.copy())
-        temp_sum = sum_fun(temp_text)
+        temp_sum = temp_text
+        if len(sen_chunk) >= OUT_SEN_COUNT: # We have to check that the input has >= sentences as the output
+            temp_sum = sum_fun(temp_text)
         sum_chunks.append(temp_sum)
 
     joined_sum = reduce(join_sents, sum_chunks)
-    print(joined_sum)
-    recur_summarize(sum_fun, joined_sum, recur_count + 1)
+    return recur_summarize(sum_fun, joined_sum, recur_count + 1)
 
 
 
@@ -60,7 +69,13 @@ if __name__ == "__main__":
         summary = fs.summarize(text, OUT_SEN_COUNT)
         return reduce(join_sents, summary)
 
-    print(recur_summarize(sf, text))
+    summary = recur_summarize(sf, text)
+
+    print_width = 50
+    print("\n" + print_width*"#")
+    print("THE SUMMARY".center(print_width))
+    print(print_width*"#", "\n\n")
+    print(summary)
 
 
 
