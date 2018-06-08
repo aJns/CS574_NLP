@@ -1,1 +1,28 @@
 \subsection{Simple, recursive summarization}
+
+We thought that a simple way to do extractive summarization on a large body of
+text would be to employ a basic summarizer, but to apply it
+\textit{recursively}. Our recursive summarizer ``meta-script'' takes a
+summarizing function, which can basically be anything, and applies it
+recursively. First it divides the text into chunks of \(n\) sentences and runs
+the summarizer on those chunks. The resulting summaries are then combined, and
+fed as the new input to the recursive summarizer. At the start of every
+recursion we check the length of the text, stopping if it's short enough.
+
+With a little glue code, our recursive python script can be made to use any
+summarizing function. In our experiments, we used a very simple summarizing
+function; It counted the word frequencies, and using those frequencies it
+assigned a score to each sentence, selecting those that had the highest scores.
+
+In previous stages of the project we looked into the different nouns appearing
+in texts. We compiled some noun frequency data, and found out that
+often the most used noun referred to the main character of a book (see
+figures~\ref{appendix:countfigs}), which isn't
+admittedly that surprising. In the first version of our recursive algorithm the
+summarizer only looks at the words in the current block; We thought it would be
+interesting to try to add the frequencies of the most used nouns. 
+
+In the final version the code first compiles a dictionary of nouns and their
+frequencies. That noun frequency data can be added to the word frequency data
+obtained from each block. The importance of the noun frequencies can also be
+adjusted.
