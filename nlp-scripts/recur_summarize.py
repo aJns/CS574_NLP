@@ -1,11 +1,13 @@
 import sys
 from functools import reduce
-from nltk.tokenize import sent_tokenize
+from nltk.tokenize import sent_tokenize, word_tokenize
 import simple_sum as simsum
 
 
 OUT_SEN_COUNT = 10
 IN_SEN_COUNT = 50
+
+FIN_SUM_WORD_COUNT = 500
 
 
 # Also stolen from the interwebs
@@ -21,12 +23,14 @@ def read_file(text_file):
         return tf.read()
 
 
-def should_end(text_sents):
-    sentence_count = len(text_sents)
-    limit = OUT_SEN_COUNT
-    print("Text has", sentence_count, "sentences.")
+def should_end(text):
+    word_count = len(word_tokenize(text))
+    sen_count = len(sent_tokenize(text))
+    limit = FIN_SUM_WORD_COUNT
+    print("Text has", sen_count, "sentences.")
+    print("Text has", word_count, "words.")
     print("The limit is", limit)
-    should_stop = sentence_count <= limit
+    should_stop = word_count <= limit or sen_count == 1
     if should_stop:
         print("Stopping")
     else:
@@ -38,10 +42,13 @@ def join_sents(s1, s2):
     return s1 + " " + s2
 
 
-def recur_summarize(sum_fun, text, recur_count = 0):
+def recur_summarize(sum_fun, text, output_sen_len = OUT_SEN_COUNT, recur_count = 0):
     print("\nRecurred", recur_count, "times\n")
     text_sents = sent_tokenize(text)
-    if should_end(text_sents):
+    if len(text_sents) <= output_sen_len:
+        output_sen_len = output_sen_len - 1
+
+    if should_end(text):
         return text
 
     sen_chunks = chunks(text_sents, IN_SEN_COUNT)
@@ -50,12 +57,12 @@ def recur_summarize(sum_fun, text, recur_count = 0):
     for sen_chunk in sen_chunks:
         temp_text = reduce(join_sents, sen_chunk.copy())
         temp_sum = temp_text
-        if len(sen_chunk) >= OUT_SEN_COUNT: # We have to check that the input has >= sentences as the output
-            temp_sum = sum_fun(temp_text)
+        if len(sen_chunk) >= output_sen_len: # We have to check that the input has >= sentences as the output
+            temp_sum = sum_fun(temp_text, output_sen_len)
         sum_chunks.append(temp_sum)
 
     joined_sum = reduce(join_sents, sum_chunks)
-    return recur_summarize(sum_fun, joined_sum, recur_count + 1)
+    return recur_summarize(sum_fun, joined_sum, output_sen_len, recur_count + 1)
 
 
 
@@ -66,8 +73,8 @@ if __name__ == "__main__":
     fs = simsum.FrequencySummarizer()
     text = read_file(text_file)
 
-    def sf(text):
-        summary = fs.summarize(text, OUT_SEN_COUNT)
+    def sf(text, output_sen_count=OUT_SEN_COUNT):
+        summary = fs.summarize(text, output_sen_count)
         return reduce(join_sents, summary)
 
     summary = recur_summarize(sf, text)
