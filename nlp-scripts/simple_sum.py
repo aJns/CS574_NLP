@@ -38,7 +38,7 @@ class FrequencySummarizer:
         del freq[w]
     return freq
 
-  def summarize(self, text, n):
+  def summarize(self, text, n, add_freq=dict()):
     """
       Return a list of n sentences 
       which represent the summary of text.
@@ -47,6 +47,7 @@ class FrequencySummarizer:
     assert n <= len(sents)
     word_sent = [word_tokenize(s.lower()) for s in sents]
     self._freq = self._compute_frequencies(word_sent)
+    self._freq.update(add_freq)
     ranking = defaultdict(int)
     for i,sent in enumerate(word_sent):
       for w in sent:

@@ -3,6 +3,7 @@ import os.path
 from functools import reduce
 from nltk.tokenize import sent_tokenize, word_tokenize
 import simple_sum as simsum
+import txt_differences as txt_dif
 
 
 OUT_SEN_COUNT = 10
@@ -73,9 +74,10 @@ if __name__ == "__main__":
 
     fs = simsum.FrequencySummarizer()
     text = read_file(text_file)
+    add_freq = txt_dif.get_noun_freqs(text)
 
     def sf(text, output_sen_count=OUT_SEN_COUNT):
-        summary = fs.summarize(text, output_sen_count)
+        summary = fs.summarize(text, output_sen_count, add_freq)
         return reduce(join_sents, summary)
 
     summary = recur_summarize(sf, text)
