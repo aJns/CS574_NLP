@@ -43,25 +43,10 @@ recent techniques in automatic summarization on books.
 
 
 \section{Approach}
-As it is mentioned, the strategy to summarize whole book should be different
-from simply summarizing the article. Word frequency seems it only shows some
-main characters, but this informations could possibly be used in abstractive
-models. 
 
+\input{simple-recur}
 
-\subsection{Algorithms}
-
-Our hypothesis in summarising long texts is that differences between books are
-important in the summary. That's why we've analysed the word frequencies in our
-set of books. It becomes clear that often the most used, or at least the top 5
-noun is referring to the main character. In books where the main character is
-named, like \textit{Fahrenheit 451}, or \textit{The Hobbit}, that noun is the
-name of the main character. In books where the main character is not named, a
-different noun is used, like ``boy'' in \textit{The Alchemist}.
-
-The results of our analysis are contained in
-graphs~\ref{fig:fahrenheit_451_nouns},~\ref{fig:the_alchemist_nouns} and ~\ref{fig:the_hobbit_nouns} (in Appendix \ref{appendix:countfigs}),
-which each contain the 30 most used nouns in a book.
+% You can do the same for your parts if you want to avoid merge conflicts
 
 
 \section{Experiments}
