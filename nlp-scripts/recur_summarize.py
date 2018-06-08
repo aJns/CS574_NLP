@@ -8,6 +8,7 @@ import txt_differences as txt_dif
 
 OUT_SEN_COUNT = 10
 IN_SEN_COUNT = 50
+IMP_NOUN_WEIGHT = 1
 
 FIN_SUM_WORD_COUNT = 500
 
@@ -75,6 +76,9 @@ if __name__ == "__main__":
     fs = simsum.FrequencySummarizer()
     text = read_file(text_file)
     add_freq = txt_dif.get_noun_freqs(text)
+
+    if IMP_NOUN_WEIGHT != 1:
+        add_freq.update((k, v*IMP_NOUN_WEIGHT) for k, v in add_freq.items())
 
     def sf(text, output_sen_count=OUT_SEN_COUNT):
         summary = fs.summarize(text, output_sen_count, add_freq)
