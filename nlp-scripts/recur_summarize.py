@@ -1,4 +1,5 @@
 import sys
+import os.path
 from functools import reduce
 from nltk.tokenize import sent_tokenize, word_tokenize
 import simple_sum as simsum
@@ -85,6 +86,6 @@ if __name__ == "__main__":
     print(print_width*"#", "\n\n")
     print(summary)
 
-    output_fname = "summary_" + text_file.split("/")[-1]
+    output_fname = "summary_" + os.path.split(text_file)[1]
     with open(output_fname, mode="w") as sf:
         sf.write(summary)
