@@ -61,6 +61,29 @@ In the end we settled for some quite simple algorithms.
 
 \section{Discussion and Conclusions} 
 % discussion: 
+As we could see in the results, our method of recursive summarization is not
+the worst way to approach this problem. Even with using a simple summarization
+algorithm, our recursive methods gets okay results in BLEU and ROUGE tests.
+However, these scores aren't a good indication of quality; Our summary is
+extractive, and thus only includes sentences from the source work, which on
+their own are a pretty bad summary.
+
+People look to summaries to give a clear summary of the plot, characters,
+themes, or anything else that would be considered important content of a book.
+These things aren't stated in the text of the book, at least not in one place;
+The summarizer needs to be able to piece together information from different
+places in the text, and present it clearly, not to even mention deeper literary
+analysis, unstated character motivations or the like. That's why we feel that
+\textbf{extractive methods pretty much can't yield results that a human reader
+would consider good}, at least not for narrative works. Perhaps an extractive
+method like ours could produce good results on a fact based text, like an
+article, report or textbook.
 
 % conclusion and future work:
-The concept of weighted, recursive automatic summarization is concluded to be a valuable novel idea because it advances work in summarization in long texts. The idea can be used independently of the specific summarization algorithm, and therefore future work would be proposed along two ways: to implement recursion with different methods such as with abstractive RNNS, and secondly to fine-tune the weighting which has now been based on important words from frequencies.
+However, thhe concept of weighted, recursive automatic summarization is
+concluded to be a valuable novel idea because it advances work in summarization
+in long texts.  The idea can be used independently of the specific
+summarization algorithm, and therefore future work would be proposed along two
+ways: to implement recursion with different methods such as with abstractive
+RNNS, and secondly to fine-tune the weighting which has now been based on
+important words from frequencies.

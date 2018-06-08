@@ -79,10 +79,17 @@ selected due to the weighting. Additionally, BLEU-1 scores around 0.5 and
 BLEU-2 around 0.15, which are each only around 0.6 lower than golden references
 evaluated against the others.
 
-We also ran the ROUGE evaluation script, which involve evaluating a given summary against all the other available summaries for that book. The ROUGE results for the Alchemist are seen in table ~\ref{tab:rouge-alchemist}. For
+We also ran the ROUGE evaluation script, which involve evaluating a given
+summary against all the other available summaries for that book. The ROUGE
+results for the Alchemist are seen in table~\ref{tab:rouge-alchemist}. For
 generating our summary we used a chunk size of 50, an output of 10, important
 nouns were weighted at 1.5 and the final summary length limit was set to a 1000
-words. It can be seen that the system summary performs quite comparable to the human-written summaries; it scores higher in all the categories than the GradeSaver summary. It also has non-zero 2-gram ROUGE score, which cannot be said for CliffsNotes and GradeSaver. Finally, the ROUGE-SU4 score is shown which is consistenly low for all summaries, but still indicative because the score is based on overlap of a combination of skip-bigrams as well as unigrams.
+words. It can be seen that the system summary performs quite comparable to the
+human-written summaries; it scores higher in all the categories than the
+GradeSaver summary. It also has non-zero 2-gram ROUGE score, which cannot be
+said for CliffsNotes and GradeSaver. Finally, the ROUGE-SU4 score is shown
+which is consistenly low for all summaries, but still indicative because the
+score is based on overlap of a combination of skip-bigrams as well as unigrams.
 
 \begin{figure}[H]
 	\centering
