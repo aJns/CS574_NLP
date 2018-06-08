@@ -8,9 +8,8 @@ We formally define the problem as the summarization of a single-document text of
 The main idea behind the work is perhaps similar to how a human may summarize long texts: by splitting the text, summarising each part and recombining, repeated until the desired length is reached. Evaluation of summaries is difficult to perform objectively and quantitatively, but BLEU and ROUGE evaluation measures have been chosen for this purpose, based on precision and recall respectively.
 
 \section{Related Work}
-Plenty of related work has been discussed in earlier sections;~\cite{Gaikwad2016} 
-suggests classical approaches of current automatic summarization techniques, 
-using abstractive and extractive methods. Most early works on 
+%Plenty of related work has been discussed in earlier sections;~\cite{Gaikwad2016} suggests classical approaches of current automatic summarization techniques, using abstractive and extractive methods.
+Most early works on 
 automatic summarization focused on documentations for given text, with 
 frequency of words and gauging the relatedness of each word to given or overall
 context. These appearance frequencies are also used in the evaluation.
@@ -31,7 +30,7 @@ As the deep learning approaches became main strategy in many researches areas,
 the importance of modelling is risen, many researchers adopt some abstractive
 methods in Natural Language
 Processing:~\cite{2016arXiv160206023N},~\cite{2017arXiv170404368S},~and~\cite{Rush2015}.
-Before, Abstractive sentence summarization has been traditionally used in
+Before, abstractive sentence summarization has been traditionally used in
 headline generation, which gives intuition that abstractive methods is capable
 of not only summarizing but also paraphrasing the input documents which some
 understanding of human languages. 
@@ -49,13 +48,6 @@ from simply summarizing the article. Word frequency seems it only shows some
 main characters, but this informations could possibly be used in abstractive
 models. 
 
-A dataset was collected from the internet of ten novels and a play, with at
-least three summaries each. The books are mainly fictional classics, due to
-their popularity on summary resources and often the expiration of their
-copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and
-GradeSaver. The books and summaries both vary quite vastly in length. All the
-documents were saved as or converted to text files, to facilitate consistency
-and ease of manipulation in Python.
 
 \subsection{Algorithms}
 
@@ -67,47 +59,28 @@ named, like \textit{Fahrenheit 451}, or \textit{The Hobbit}, that noun is the
 name of the main character. In books where the main character is not named, a
 different noun is used, like ``boy'' in \textit{The Alchemist}.
 
-The results of our analysis are contained in the three
-graphs~\ref{fig:fahrenheit_451_nouns},~\ref{fig:the_alchemist_nouns},~\ref{fig:the_hobbit_nouns},
+The results of our analysis are contained in
+graphs~\ref{fig:fahrenheit_451_nouns},~\ref{fig:the_alchemist_nouns} and ~\ref{fig:the_hobbit_nouns} (in Appendix \ref{appendix:countfigs}),
 which each contain the 30 most used nouns in a book.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{fahrenheit_451_nouns}
-	\caption{Most used nouns in Fahrenheit 451}\label{fig:fahrenheit_451_nouns}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{the_alchemist_nouns}
-	\caption{Most used nouns in The Alchemist}\label{fig:the_alchemist_nouns}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{the_hobbit_nouns}
-	\caption{Most used nouns in The Hobbit}\label{fig:the_hobbit_nouns}
-\end{figure}
-
-Our current plan is to use this information to focus summarization around these
-important words. The results are not going to be pretty, but at least in some
-books it might result in a summary that at least conveys the important plot
-points.
 
 \section{Experiments}
-
+\subsection{Dataset}
+A dataset was collected from the internet of ten novels and a play, with at
+least three summaries each. The books are mainly fictional classics, due to
+their popularity on summary resources and often the expiration of their
+copyright. Most of the summaries are sourced from CliffsNotes, SparkNotes and
+GradeSaver. The books and summaries both vary quite vastly in length. All the
+documents were saved as or converted to text files, to facilitate consistency
+and ease of manipulation in Python.
 \subsection{Evaluation}
 Aside from simply reading the summarization outputs of the algorithm, two
-quantitative measures were proposed to evaluate them. It must be noted again
-that the scores are expected to be quite low, because the nature of
-summarization leads to very different answers with no objective measure of how
-``good'' they are. 
-
+quantitative measures were proposed to evaluate them.
 The nltk.translate.bleu\_score toolkit has a function, corpus\_blue, which can
 be used for BLEU evaluation. BLEU was originally used for translations, but is
 now also used to evaluate summaries and is based on precision scores of
 n-gram overlaps between documents and references. The corpus\_blue allows for
-varying weights of 1- to 4-grams, and multiple golden references. 
+varying weights of 1- to 4-grams, and for multiple golden references. 
 
 In table~\ref{table:bleu_huckfinn}, example scores of running this BLEU
 evaluation can be seen. In each case, one online summary was evaluated against
