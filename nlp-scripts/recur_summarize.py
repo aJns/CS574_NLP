@@ -22,7 +22,7 @@ def chunks(l, n):
 
 
 def read_file(text_file):
-    with open(text_file, encoding = 'utf-8') as tf:
+    with open(text_file, encoding="utf8") as tf:
         return tf.read()
 
 
@@ -92,6 +92,8 @@ if __name__ == "__main__":
     print(print_width*"#", "\n\n")
     print(summary)
 
-    output_fname = "summary_" + os.path.split(text_file)[1]
-    with open(output_fname, mode="w", encoding = 'utf-8') as sf:
+
+    split_path = os.path.split(text_file)
+    output_fname = split_path[0] + os.path.sep + "sum" + os.path.sep + "our_summary_" + split_path[1]
+    with open(output_fname, mode="w", encoding="utf8") as sf:
         sf.write(summary)
