@@ -3,11 +3,10 @@ This is the final report presenting the term project, which aims to contribute t
 
 We formally define the problem as the summarization of a single-document text of over 30,000 words (with the longest in our dataset being Atlas Shrugged at over 580,000 words), to a summary of less than 1,000 words. Existing approaches can broadly be categorised into extractive and abstractive. Extractive methods directly choose important parts, usually sentences, from the original text and combine these into a summary, while abstractive methods involve rephrasing what is perceived as important. A cutting-edge approach may involve recurrent neural networks for abstractive summarization.
 
-% summarise experiment results 
-
-The main idea behind the work is perhaps similar to how a human may summarize long texts: by splitting the text, summarising each part and recombining, repeated until the desired length is reached. Evaluation of summaries is difficult to perform objectively and quantitatively, but BLEU and ROUGE evaluation measures have been chosen for this purpose, based on precision and recall respectively.
+The main idea behind the work is perhaps similar to how a human may summarize long texts: by splitting the text, summarising each part and recombining, repeated until the desired length is reached. Evaluation of summaries is difficult to perform objectively and quantitatively, but BLEU and ROUGE evaluation measures have been chosen for this purpose, based on precision and recall respectively. In combining recursive summarization with weighting by important nouns, promising ROUGE and BLEU scores were obtained, with the main drawback being poor sentence coherence. This arises because the sentences are chosen independently of each other, and therefore they read poorly in sequence, which could potentially be solved by rephrasing in abstractive methods.
 
 \section{Related Work}
+%let's not refer to previous sections in a final report
 %Plenty of related work has been discussed in earlier sections;~\cite{Gaikwad2016} suggests classical approaches of current automatic summarization techniques, using abstractive and extractive methods.
 Most early works on 
 automatic summarization focused on documentations for given text, with 
