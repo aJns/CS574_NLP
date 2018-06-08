@@ -42,18 +42,67 @@ must simply be kept in mind as a limitation when it comes to evaluation.
 	\end{tabular}
 \end{table}
 
-Additionally, ROUGE (recall-oriented understudy for gisting evaluation) is also used for evaluation; the score is based on recall of n-gram overlaps between system and golden summaries. Because higher n-gram scores are so low, 1- and 2- grams of each BLEU and ROUGE were the main metrics used. In evaluating, words were stemmed, stop-words were accounted for and punctuation was removed, in order to focus on content rather than phrasing.
+Additionally, ROUGE (recall-oriented understudy for gisting evaluation) is also
+used for evaluation; the score is based on recall of n-gram overlaps between
+system and golden summaries. Because higher n-gram scores are so low, 1- and 2-
+grams of each BLEU and ROUGE were the main metrics used. In evaluating, words
+were stemmed, stop-words were accounted for and punctuation was removed, in
+order to focus on content rather than phrasing.
 
 \subsection{Results}
-Because of the novelty of the method, there were no established baselines to compare to. As ROUGE and BLEU scores would also vary wildly with the dataset used, it would also not make sense to compare these to other studies. In terms of purely quantitative scores, promising results were obtained, in the sense that the system summaries scored similarly to the golden summaries against each other.
+Because of the novelty of the method, there were no established baselines to
+compare to. As ROUGE and BLEU scores would also vary wildly with the dataset
+used, it would also not make sense to compare these to other studies. In terms
+of purely quantitative scores, promising results were obtained, in the sense
+that the system summaries scored similarly to the golden summaries against each
+other.
 
-In the experiments, the effect of changing various parameters was examined. The first of these was the sizes of the sections that the book was broken into. This was varied between 10 and 100 sentences, while the number of sentences out from each chunk was kept constant at 5 sentences. In Appendix \ref{appendix:countfigs}, figure \ref{fig:bleus_okay} shows an example of these results for the Alchemist. From this, it was found that performance was roughly constant for sentence chunks up to 50, after that it drops. This indicates that when output sentences drop to less than 10\% of input sentences in each step, the information retention drops.
+In the experiments, the effect of changing various parameters was examined. The
+first of these was the sizes of the sections that the book was broken into.
+This was varied between 10 and 100 sentences, while the number of sentences out
+from each chunk was kept constant at 5 sentences. In
+Appendix~\ref{appendix:countfigs}, figure~\ref{fig:bleus_okay} shows an example of these
+results for the Alchemist. From this, it was found that performance was roughly
+constant for sentence chunks up to 50, after that it drops. This indicates that
+when output sentences drop to less than 10\% of input sentences in each step,
+the information retention drops.
 
-In another experiment, the chunk size was kept constant at 50 sentences, but the number of sentences output from these was varied between 1 and 45. From figure \ref{fig:bleus}, it can be seen that there is an optimum at 10 sentences out for 50 sentences in, for the Alchemist but also observed in other books. More interestingly, these experiments were repeated both with and without using the important words to weight sentences. While weighting did not make any significant difference in the BLEU-1 score, it consistently improved BLEU-2 score. This indicates that more important and informative sentences were selected due to the weighting. Additionally, BLEU-1 scores around 0.5 and BLEU-2 around 0.15, which are each only around 0.6 lower than golden references evaluated against the others.
+In another experiment, the chunk size was kept constant at 50 sentences, but
+the number of sentences output from these was varied between 1 and 45. From
+figure~\ref{fig:bleus}, it can be seen that there is an optimum at 10 sentences
+out for 50 sentences in, for the Alchemist but also observed in other books.
+More interestingly, these experiments were repeated both with and without using
+the important words to weight sentences. While weighting did not make any
+significant difference in the BLEU-1 score, it consistently improved BLEU-2
+score. This indicates that more important and informative sentences were
+selected due to the weighting. Additionally, BLEU-1 scores around 0.5 and
+BLEU-2 around 0.15, which are each only around 0.6 lower than golden references
+evaluated against the others.
+
+We also ran the ROUGE evaluation script for the summaries of The Alchemist. For
+generating our summary we used a chunk size of 50, an output of 10, important
+nouns were weighted at 1.5 and the final summary length limit was set to a 1000
+words. The results are in the table~\ref{tab:rouge-alchemist}. As we can see,
+our summary performs okay; In all the categories it has a higher score than the
+GradeSaver summary.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{bleus_good}
-	\caption{BLEU scores for varying the compression ratio per recursive cycle for the Alchemist. }\label{fig:bleus}
+	\caption{BLEU scores for varying the compression ratio per recursive cycle for the Alchemist.}\label{fig:bleus}
 \end{figure}
+
+\begin{table}[H]
+	\centering
+	\caption{ROUGE results of summaries for The Alchemist}\label{tab:rouge-alchemist}
+	\begin{tabular}{l l l l}
+		\toprule
+		\textbf{}   & \textbf{ROUGE-1} & \textbf{ROUGE-2} & \textbf{ROUGE-SU4} \\ \midrule
+		CliffsNotes & 0.350           & 0.000           & 0.087 \\ \midrule
+		SparkNotes  & 0.652           & 0.273           & 0.295 \\ \midrule
+		GradeSaver  & 0.105           & 0.000           & 0.031 \\ \midrule
+		Our summary & 0.120           & 0.042           & 0.045 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
