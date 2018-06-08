@@ -6,11 +6,11 @@ import simple_sum as simsum
 import txt_differences as txt_dif
 
 
-OUT_SEN_COUNT = 10
+OUT_SEN_COUNT = 45
 IN_SEN_COUNT = 50
-IMP_NOUN_WEIGHT = 1
+IMP_NOUN_WEIGHT = 1.5
 
-FIN_SUM_WORD_COUNT = 500
+FIN_SUM_WORD_COUNT = 1000
 
 
 # Also stolen from the interwebs
@@ -22,7 +22,7 @@ def chunks(l, n):
 
 
 def read_file(text_file):
-    with open(text_file) as tf:
+    with open(text_file, encoding = 'utf-8') as tf:
         return tf.read()
 
 
@@ -93,5 +93,5 @@ if __name__ == "__main__":
     print(summary)
 
     output_fname = "summary_" + os.path.split(text_file)[1]
-    with open(output_fname, mode="w") as sf:
+    with open(output_fname, mode="w", encoding = 'utf-8') as sf:
         sf.write(summary)

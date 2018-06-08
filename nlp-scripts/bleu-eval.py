@@ -10,23 +10,23 @@ def strip_punctuation(s):
 
 def read_txt(filepath):
     x = []
-    with open(filepath,'r') as f:
+    with open(filepath,'r', encoding = 'utf-8') as f:
         content = f.read()
         oneline = content.replace("\n"," ")
         depunc = strip_punctuation(oneline)
         x.append(depunc.split())
     return x
 
-#not fahrenheit, emma, belljar(encoding), grapes, hobbit (encoding)
-book = "huckfinn"
-ref_dir = "../project-data/Adventures_of_Huckleberry_Finn/"
+#not fahrenheit, emma, belljar(encoding), grapes, hobbit (encoding), atlas(encoding), jane
+book = "hobbit"
+ref_dir = "../project-data/the_Hobbit/sum/"
 ref_paths = [
         "gradesaver_" + book + ".txt"
         ,"sparknotes_" + book + ".txt"
         ,"cliffsnotes_" + book + ".txt"
         ,"wiki_" + book + ".txt"
         ]
-summary_path = "summary_Mark_Twain_the_Adventures_of_Huckleberry_Finn.txt"
+summary_path = "summary_tolkien_hobbit.txt"
 
 refs = []
 for r_path in ref_paths:
